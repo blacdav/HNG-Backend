@@ -42,9 +42,9 @@ export const GhCallbackAuth = async (req, res) => {
 
         const refresh_token = await TokenService.genRefreshToken({ github_id: user_info.id });
 
-        res.cookie("access_token", access_token, { httpOnly: true, secure: false, sameSite: "lax" });
+        res.cookie("access_token", access_token, { httpOnly: true, secure: true, sameSite: "none" });
 
-        res.cookie("refresh_token", refresh_token, { httpOnly: true, secure: false, sameSite: "lax" });
+        res.cookie("refresh_token", refresh_token, { httpOnly: true, secure: true, sameSite: "none" });
 
         return res.redirect("http://localhost:5173/dashboard")
     } catch (err) {

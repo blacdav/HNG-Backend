@@ -15,8 +15,8 @@ export const GithubAuth = (req, res) => {
     res.cookie("gh_oauth_state", {state, code_verifier}, {
         httpOnly: true,
         secure: true,
-        sameSite: "lax",
-        maxAge: 10 * 60 * 1000 // 10 minutes
+        sameSite: "strict",
+        maxAge: 20 * 1000 // 2 seconds
     });
 
     const url = `https://github.com/login/oauth/authorize?` +
