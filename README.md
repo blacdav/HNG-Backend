@@ -1,10 +1,10 @@
 # GENDERIZE API
 
-## BASE URL [https://hngproject-zeta.vercel.app](https://hngproject-zeta.vercel.app)
+## BASE URL [https://hng-backend-azure.vercel.app](https://hng-backend-azure.vercel.app)
 
 ## CLASSIFY
 
-### GET [/api/classify](https://hngproject-zeta.vercel.app/api/classify?name=david)
+### GET [/api/classify](https://hng-backend-azure.vercel.app/api/classify?name=david)
 
 Classifies a given first name and predicts the likely gender associated with it.
 
@@ -83,7 +83,7 @@ GET {{baseUrl}}/api/classify?name=david
 
 ## Profiles
 
-### GET [/api/profiles](https://hngproject-zeta.vercel.app/api/profiles)
+### GET [/api/profiles](https://hng-backend-azure.vercel.app/api/profiles)
 
 Retrieves a list of profiles, optionally filtered by gender, country, and age group. If no query parameters are provided, all profiles are returned.
 
@@ -173,7 +173,7 @@ GET {{baseUrl}}/api/profiles?country_id=ng
 
  ```
 
-### GET [/api/profile/:id](https://hngproject-zeta.vercel.app/api/profiles/)
+### GET [/api/profile/:id](https://hng-backend-azure.vercel.app/api/profiles/)
 
 Retrieves a single profile by its unique identifier.
 
@@ -258,7 +258,7 @@ GET {{baseUrl}}/api/profiles/019da298-1297-70a8-8d5c-6918c16469a0
 
  ```
 
-### POST [/api/profiles](https://hngproject-zeta.vercel.app/api/profiles)
+### POST [/api/profiles](https://hng-backend-azure.vercel.app/api/profiles)
 
 Creates a new gender profile for a given name. The API analyzes the name and returns predicted gender, age, and country of origin data, storing the result as a profile.
 
@@ -333,7 +333,7 @@ Returns a success status along with the newly created profile object containing 
 | `createdAt` | `string` (ISO 8601) | Timestamp indicating when the profile was created. |
 | `updatedAt` | `string` (ISO 8601) | Timestamp indicating when the profile was last updated. |
 
-### DELETE [/api/profiles/:id](https://hngproject-zeta.vercel.app/api/profiles)
+### DELETE [/api/profiles/:id](https://hng-backend-azure.vercel.app/api/profiles)
 
 Deletes an existing profile by its unique ID. If the profile is found, it is permanently removed and no response body is returned. If no profile exists with the given ID, a `404 Not Found` error is returned.
 
