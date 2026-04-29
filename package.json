@@ -1,0 +1,42 @@
+{
+  "name": "genderize_api",
+  "version": "1.0.0",
+  "description": "identify gender from name",
+  "keywords": [
+    "hng",
+    "backend",
+    "node"
+  ],
+  "homepage": "https://github.com/blacdav/HNG#readme",
+  "bugs": {
+    "url": "https://github.com/blacdav/HNG/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blacdav/HNG.git"
+  },
+  "license": "ISC",
+  "author": "Blacdav",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "@vercel/functions": "^3.4.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "morgan": "^1.10.1",
+    "mysql2": "^3.22.1",
+    "sequelize": "^6.37.8",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "@types/morgan": "^1.9.10",
+    "nodemon": "^3.1.14"
+  }
+}
