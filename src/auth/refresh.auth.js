@@ -24,7 +24,7 @@ export const RefreshAuth = async (req, res) => {
 
         const { github_id } = payload;
 
-        const user = await User.findOne({ where: { github_id }, attributes: ["github_id", "role"] });
+        const user = await User.findOne({ where: { github_id }, attributes: ["github_id", "username", "role"] });
 
         const access_token = await TokenService.genAccessToken({ github_id, role: user.role });
 
@@ -57,7 +57,8 @@ export const RefreshAuth = async (req, res) => {
             return res.status(200).json({
                 status: "success",
                 access_token,
-                refresh_token: new_refresh_token
+                refresh_token: new_refresh_token,
+                data: user
             });
         }
     } catch (err) {
