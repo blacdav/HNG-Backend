@@ -57,7 +57,7 @@ export const RefreshAuth = async (req, res) => {
             return res.status(200).json({
                 status: "success",
                 access_token,
-                refresh_token
+                refresh_token: new_refresh_token
             });
         }
     } catch (err) {
