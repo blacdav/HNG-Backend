@@ -29,8 +29,8 @@ export const CheckAuthUser = async (req, res, next) => {
 
         return next();
     } catch (err) {
-        console.log(`Server Error: ${JSON.stringify(err)}`);
-        return res.status(500).json(`Server Error: ${err}`)
+        console.log(`App Server Error: ${JSON.stringify(err)}`);
+        return res.status(500).json(`App Server Error: ${err}`)
         // return next(err);
     }
 }

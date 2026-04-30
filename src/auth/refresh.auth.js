@@ -4,7 +4,7 @@ import TokenService from "./github/services/tokens.js";
 const { User } = models;
 
 export const RefreshAuth = async (req, res) => {
-    const { refresh_token } = req.query;
+    const { refresh_token } = req.body;
 
     let refresh;
 
@@ -14,7 +14,9 @@ export const RefreshAuth = async (req, res) => {
         refresh = refresh_token;
     }
 
-    if (!token) {
+    console.log("refresh", refresh);
+
+    if (!refresh) {
         return res.status(401).json({
             status: "failed",
             message: "No token was received"
@@ -63,9 +65,9 @@ export const RefreshAuth = async (req, res) => {
             });
         }
     } catch (err) {
-        return res.status(401).json({
+        return res.status(500).json({
             status: "error",
-            message: "Invalid refresh token"
+            message: `App Server Error: ${err}`
         });
     }
 }
