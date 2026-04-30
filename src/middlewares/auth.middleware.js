@@ -2,7 +2,6 @@ import jwt from "jsonwebtoken";
 import TokenService from "../auth/github/services/tokens.js";
 
 export const CheckAuthUser = async (req, res, next) => {
-    // const { id } = req.params; // this part is not needed as we are using the token to verify the user
     try {
         let token;
         if (req.headers["x-client-type"] === "web") {
@@ -14,7 +13,7 @@ export const CheckAuthUser = async (req, res, next) => {
         if (!token) {
             return res.status(401).json({
                 success: false,
-                message: "Authorization Token Required"
+                message: "Authorization Required"
             })
         }
 
