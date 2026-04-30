@@ -63,7 +63,7 @@ export const RefreshAuth = async (req, res) => {
             });
         }
     } catch (err) {
-        return res.status(400).json({
+        return res.status(401).json({
             status: "error",
             message: "Invalid refresh token"
         });
