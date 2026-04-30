@@ -52,7 +52,7 @@ export const RefreshAuth = async (req, res) => {
             });
         } else {
             console.log("access_token", access_token);
-            console.log("refresh_token", refresh_token);
+            console.log("refresh_token", new_refresh_token);
 
             return res.status(200).json({
                 status: "success",
