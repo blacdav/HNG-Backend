@@ -4,19 +4,17 @@ import TokenService from "./github/services/tokens.js";
 const { User } = models;
 
 export const RefreshAuth = async (req, res) => {
-    const { refresh_token } = req.body;
-
-    let refresh;
+    let token;
 
     if (req.headers["x-client-type"] === "web") {
-        refresh = req.cookies.refresh_token;
+        token = req.cookies.refresh_token;
     } else {
-        refresh = refresh_token;
+        token = req.body.refresh_token;
     }
 
-    console.log("refresh", refresh);
+    console.log("token", token);
 
-    if (!refresh) {
+    if (!token) {
         return res.status(401).json({
             status: "failed",
             message: "No token was received"
@@ -24,7 +22,7 @@ export const RefreshAuth = async (req, res) => {
     }
 
     try {
-        const payload = await TokenService.verifyRefreshToken(refresh);
+        const payload = await TokenService.verifyRefreshToken(token);
 
         const { github_id } = payload;
 
