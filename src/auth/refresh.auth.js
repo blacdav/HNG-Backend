@@ -51,10 +51,7 @@ export const RefreshAuth = async (req, res) => {
                 message: "Tokens refreshed successfully"
             });
         } else {
-            console.log("access_token", access_token);
-            console.log("refresh_token", new_refresh_token);
-
-            return res.status(200).json({
+                return res.status(200).json({
                 status: "success",
                 access_token,
                 refresh_token: new_refresh_token,
