@@ -11,10 +11,8 @@ export const CheckAuthUser = async (req, res, next) => {
             token = req.headers.authorization?.split(" ")[1];
         }
 
-        console.log("token: ", token);
-
         if (!token) {
-            return res.status(400).json({
+            return res.status(401).json({
                 success: false,
                 message: "Authorization Token Required"
             })
@@ -23,7 +21,7 @@ export const CheckAuthUser = async (req, res, next) => {
         const decoded = await TokenService.verifyAccessToken(token);
         if (!decoded || typeof decoded !== "object") {
             return res.status(401).json({
-                success: false,
+                status: "failed",
                 message: "Unauthenticated User"
             });
         }
