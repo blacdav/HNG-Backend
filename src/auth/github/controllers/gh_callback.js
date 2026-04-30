@@ -107,11 +107,9 @@ export const GhDeviceCallbackAuth = async (req, res) => {
         return res.status(200).json({
             status: "success",
             message: "User Authenticated successfully",
-            data: user,
-            tokens: {
-                access_token,
-                refresh_token
-            }
+            access_token,
+            refresh_token,
+            data: user
         });
     } catch (err) {
         console.log("err object", err);

@@ -1,3 +1,8 @@
+import { sequelize } from "../db/index.js";
+import models from "../models/index.model.js";
+
+const { RefreshToken } = models;
+
 export const LogoutAuth = (req, res) => {
     // receives a json body with refresh token, 
     // invalidates the refresh token in the database
@@ -8,10 +13,22 @@ export const LogoutAuth = (req, res) => {
         // For example, you could have a RefreshToken model and set the token as invalid
         // await RefreshToken.update({ is_valid: false }, { where: { token: refresh_token } });
 
-        res.clearCookie("access_token");
+        if (req.headers["x-client-type"] === "web") {
+            res.clearCookie("access_token");
 
-        res.clearCookie("refresh_token");
-        
+            res.clearCookie("refresh_token");
+
+            // return res.status(204).end()
+        }
+
+        sequelize.transaction(async t => {
+            await RefreshToken.update({
+                version,
+                where: { token },
+                transaction: t
+            })
+        })
+
         return res.status(204).end();
     } catch (err) {
         console.error("Error logging out:", err);
