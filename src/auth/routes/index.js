@@ -5,16 +5,17 @@ import { RefreshAuth } from "../refresh.auth.js";
 import { GitHubDeviceAuth } from "../github/controllers/device.js";
 import { MeAuth } from "../me.auth.js";
 import { CheckAuthUser } from "../../middlewares/auth.middleware.js";
+import { LogoutAuth } from "../logout.auth.js";
 
 const router = Router();
 
 router.get('/github', GithubAuth);
 router.get('/github/callback', GhCallbackAuth); // to be called by github server
-router.post('/refresh', RefreshAuth);
-// router.post('/logout', LogoutAuth);
 router.get('/github/device', GitHubDeviceAuth);
 router.post('/github/device/callback', GhDeviceCallbackAuth);
-// router.post('/logout', LogoutAuth);
+
 router.get('/me', CheckAuthUser, MeAuth);
+router.post('/refresh', RefreshAuth);
+router.post('/logout', CheckAuthUser, LogoutAuth);
 
 export default router;

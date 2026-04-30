@@ -1,4 +1,4 @@
-export const LogOutAuth = (req, res) => {
+export const LogoutAuth = (req, res) => {
     // receives a json body with refresh token, 
     // invalidates the refresh token in the database
     const { refresh_token } = req.body;
@@ -7,6 +7,11 @@ export const LogOutAuth = (req, res) => {
         // Invalidate the refresh token in the database (if you are storing them)
         // For example, you could have a RefreshToken model and set the token as invalid
         // await RefreshToken.update({ is_valid: false }, { where: { token: refresh_token } });
+
+        res.clearCookie("access_token");
+
+        res.clearCookie("refresh_token");
+        
         return res.status(204).end();
     } catch (err) {
         console.error("Error logging out:", err);

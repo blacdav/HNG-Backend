@@ -32,6 +32,7 @@ export const GhCallbackAuth = async (req, res) => {
                     username: user_info.login,
                     email: user_info.email,
                     avatar_url: user_info.avatar_url,
+                    role: user_info.email === "davidaniefoik@gmail.com" ? "admin" : null,
                     last_login_at: new Date()
                 },
                 transaction: t
@@ -42,9 +43,20 @@ export const GhCallbackAuth = async (req, res) => {
 
         const refresh_token = await TokenService.genRefreshToken({ github_id: user_info.id });
 
-        res.cookie("access_token", access_token, { httpOnly: true, secure: true, sameSite: "none" });
+        res.cookie("access_token", access_token, {
+            httpOnly: true,
+            secure: true,
+            sameSite: "none",
+            maxAge: 3 * 60 * 1000
+        });
 
-        res.cookie("refresh_token", refresh_token, { httpOnly: true, secure: true, sameSite: "none" });
+        res.cookie("refresh_token", refresh_token, {
+            httpOnly: true,
+            secure: true,
+            sameSite: "none",
+            path: "/api/auth/refresh",
+            maxAge: 5 * 60 * 1000
+        });
 
         return res.redirect("http://localhost:5173/dashboard")
     } catch (err) {
@@ -82,6 +94,7 @@ export const GhDeviceCallbackAuth = async (req, res) => {
                     username: user_info.login,
                     email: user_info.email,
                     avatar_url: user_info.avatar_url,
+                    role: user_info.email === "davidaniefoik@gmail.com" ? "admin" : null,
                     last_login_at: new Date()
                 },
                 transaction: t
