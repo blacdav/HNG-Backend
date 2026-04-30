@@ -58,7 +58,7 @@ export const GhCallbackAuth = async (req, res) => {
             maxAge: 5 * 60 * 1000
         });
 
-        return res.redirect("http://localhost:5173/dashboard")
+        return res.redirect("https://hng-frontend-opal.vercel.app/dashboard")
     } catch (err) {
         console.log("err object", err);
         throw err;
