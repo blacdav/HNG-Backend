@@ -8,7 +8,7 @@ export default class TokenService {
 
     static async genAccessToken(payload) {
         try {
-            return jwt.sign(payload, this.access, { expiresIn: "5s" });
+            return jwt.sign(payload, this.access, { expiresIn: "3m" });
         } catch (err) {
             console.log("Error generating access token", err);
             throw err;
