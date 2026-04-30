@@ -4,9 +4,9 @@ import models from "../models/index.model.js";
 const { RefreshToken } = models;
 
 export const LogoutAuth = (req, res) => {
-    // receives a json body with refresh token, 
+    // receives a json body with refresh token,
     // invalidates the refresh token in the database
-    const { refresh_token } = req.body;
+    const { refresh_token, access_token } = req.body;
 
     try {
         // Invalidate the refresh token in the database (if you are storing them)
@@ -19,15 +19,17 @@ export const LogoutAuth = (req, res) => {
             res.clearCookie("refresh_token");
 
             // return res.status(204).end()
+        } else {
+            req.body.refresh_token
         }
 
-        sequelize.transaction(async t => {
-            await RefreshToken.update({
-                version,
-                where: { token },
-                transaction: t
-            })
-        })
+        // sequelize.transaction(async t => {
+        //     await RefreshToken.update({
+        //         version,
+        //         where: { token },
+        //         transaction: t
+        //     })
+        // })
 
         return res.status(204).end();
     } catch (err) {

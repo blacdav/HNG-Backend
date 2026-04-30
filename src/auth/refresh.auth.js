@@ -16,7 +16,7 @@ export const RefreshAuth = async (req, res) => {
 
     if (!token) {
         return res.status(401).json({
-            status: "failed",
+            status: "error",
             message: "No token was received"
         })
     }
