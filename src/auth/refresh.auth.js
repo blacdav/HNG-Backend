@@ -36,14 +36,14 @@ export const RefreshAuth = async (req, res) => {
             res.cookie("access_token", access_token, {
                 httpOnly: true,
                 secure: true,
-                sameSite: "strict",
-                maxAge: 5 * 60 * 1000
+                sameSite: "none",
+                maxAge: 3 * 60 * 1000
             });
 
             res.cookie("refresh_token", new_refresh_token, {
                 httpOnly: true,
                 secure: true,
-                sameSite: "strict",
+                sameSite: "none",
                 path: "/api/auth/refresh",
                 maxAge: 5 * 60 * 1000
             });
