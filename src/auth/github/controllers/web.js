@@ -16,6 +16,7 @@ export const GithubAuth = (req, res) => {
         httpOnly: true,
         secure: true,
         sameSite: "none",
+        path: "/api/auth/github/callback",
         maxAge: 20 * 1000 // 20 seconds
     });
 
