@@ -20,7 +20,7 @@ export const GithubAuth = (req, res) => {
         maxAge: 20 * 1000 // 20 seconds
     });
 
-    const url = `https://github.com/login/oauth/authorize?` +
+    const url = `https://github.com/login/oauth/authorize` +
         new URLSearchParams({
             client_id: ghConfig.clientId,
             redirect_uri: ghConfig.callbackUrl,

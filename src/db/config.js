@@ -5,9 +5,10 @@ export const dbConn = async () => {
     await sequelize.authenticate();
     // await sequelize.sync({ alter: true });
     console.log("Database connected successfully");
+    return true;
   } catch (err) {
     console.error("Database connection failed:", err);
-    throw err;
+    return false;
     // process.exit(1);
   }
 };
