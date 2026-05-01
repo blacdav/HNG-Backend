@@ -23,7 +23,7 @@ export const DeleteProfile = async (req, res) => {
 
         await Profile.destroy({ where: { id } });
 
-        return res.status(204).end();
+        return res.status(204).send();
     } catch (err) {
         return res.status(500).json({
             status: "error",

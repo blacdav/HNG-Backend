@@ -31,7 +31,7 @@ export const LogoutAuth = (req, res) => {
         //     })
         // })
 
-        return res.status(204).end();
+        return res.status(204).send();
     } catch (err) {
         console.error("Error logging out:", err);
         return res.status(400).json({
