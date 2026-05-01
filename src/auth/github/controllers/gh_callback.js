@@ -13,10 +13,7 @@ export const GhCallbackAuth = async (req, res) => {
     const storedState = req.cookies.gh_oauth_state;
     
     if (!storedState.state || state !== storedState.state) {
-        return res.status(400).json({
-            status: "error",
-            message: "Invalid state parameter"
-        });
+        return res.redirect("https://hng-frontend-opal.vercel.app")
     }
 
     try {

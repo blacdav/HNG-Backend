@@ -34,6 +34,13 @@ app.use(async (req, res, next) => {
     }
 })
 
+app.get("/", (req, res) => {
+  res.status(200).json({
+    status: "success",
+    message: "Backend is running",
+  });
+});
+
 app.use('/api', router);
 
 app.use((err, req, res, next) => {
