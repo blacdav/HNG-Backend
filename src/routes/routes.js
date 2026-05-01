@@ -8,7 +8,7 @@ import { ApiLimit, AuthLimit } from "../middlewares/rate-limit.middleware.js";
 const router = Router();
 
 router.use('/auth', AuthLimit, AuthRoutes);
-router.use('/profiles', CheckAuthUser, ApiLimit, ProfileRoutes);
+router.use('/profiles', ApiLimit, CheckAuthUser, ProfileRoutes);
 router.use('/classify', ClassifyRoutes);
 
 export default router;

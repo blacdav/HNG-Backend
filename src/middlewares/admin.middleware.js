@@ -3,7 +3,7 @@ import models from "../models/index.model.js";
 const { User } = models;
 
 export const AdminAuth = (req, res, next) => {
-    const { github_id, role } = req.user;
+    const { role } = req.user;
 
     if (!role || role === "") {
         return res.status(404).json({
