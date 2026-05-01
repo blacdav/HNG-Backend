@@ -53,8 +53,8 @@ app.use('/api', router);
 // })
 
 // removing app.listen because of vercel
-app.listen(8000, () => {
-  console.log("Server is running on port 8000");
-});
+// app.listen(8000, () => {
+//   console.log("Server is running on port 8000");
+// });
 
-// export default app;
+export default app;
