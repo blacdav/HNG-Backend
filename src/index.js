@@ -11,7 +11,7 @@ const logger = morgan("dev");
 app.use(cors({
     origin: ["http://localhost:5173", "http://localhost:3000", "https://hng-frontend-opal.vercel.app"],
     methods: ["POST", "GET", "DELETE"],
-    allowedHeaders: ["Content-Type", "Cookie", "x-client-type"],
+    allowedHeaders: ["Content-Type", "Cookie", "x-client-type", "Authorization"],
     credentials: true
 }));
 
@@ -43,18 +43,20 @@ app.get("/", (req, res) => {
 
 app.use('/api', router);
 
-// app.use((err, req, res, next) => {
-//     console.error(err);
+app.use((err, req, res, next) => {
+    console.error(err);
 
-//     res.status(500).json({
-//         status: "error",
-//         message: "Internal Server Error"
-//     })
-// })
+    return res.status(500).json({
+        status: "error",
+        message: "Internal Server Error"
+    })
+})
 
 // removing app.listen because of vercel
-// app.listen(8000, () => {
-//   console.log("Server is running on port 8000");
-// });
+if (process.env.NODE_ENV !== "production") {
+    app.listen(8000, () => {
+        console.log("Server is running on port 8000");
+    });
+}
 
 export default app;
