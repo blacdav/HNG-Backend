@@ -18,9 +18,7 @@ export const LogoutAuth = (req, res) => {
 
             res.clearCookie("refresh_token");
 
-            // return res.status(204).end()
-        } else {
-            req.body.refresh_token
+            return res.status(204).send()
         }
 
         // sequelize.transaction(async t => {

@@ -9,6 +9,6 @@ const router = Router();
 
 router.use('/auth', AuthLimit, AuthRoutes);
 router.use('/profiles', ApiLimit, CheckAuthUser, ProfileRoutes);
-    router.use('/classify', ClassifyRoutes);
+router.use('/classify', ClassifyRoutes);
 
 export default router;
