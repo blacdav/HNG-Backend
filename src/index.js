@@ -43,14 +43,14 @@ app.get("/", (req, res) => {
 
 app.use('/api', router);
 
-app.use((err, req, res, next) => {
-    console.error(err);
+// app.use((err, req, res, next) => {
+//     console.error(err);
 
-    res.status(500).json({
-        status: "error",
-        message: "Internal Server Error"
-    })
-})
+//     res.status(500).json({
+//         status: "error",
+//         message: "Internal Server Error"
+//     })
+// })
 
 // removing app.listen because of vercel
 app.listen(8000, () => {
