@@ -10,7 +10,7 @@ export const GhCallbackAuth = async (req, res) => {
     const { code, state } = req.query;
 
     // Verify the state parameter to prevent CSRF attacks
-    const storedState = req.cookies.gh_oauth_state;
+    const storedState = JSON.parse(req.cookies.gh_oauth_state);
     
     if (!storedState.state || state !== storedState.state) {
         return res.redirect("https://hng-frontend-opal.vercel.app")
@@ -110,6 +110,6 @@ export const GhDeviceCallbackAuth = async (req, res) => {
         });
     } catch (err) {
         console.log("err object", err);
-        throw err;
+        throw Error(err);
     }
 }

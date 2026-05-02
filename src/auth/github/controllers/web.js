@@ -12,7 +12,7 @@ export const GithubAuth = (req, res) => {
     .update(code_verifier)
     .digest("base64url");
 
-    res.cookie("gh_oauth_state", {state, code_verifier}, {
+    res.cookie("gh_oauth_state", JSON.stringify({state, code_verifier}), {
         httpOnly: true,
         secure: true,
         sameSite: "none",
