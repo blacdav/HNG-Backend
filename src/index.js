@@ -24,10 +24,10 @@ app.use(logger);
 dbConn();
 
 app.use(async (req, res, next) => {
-    // const ip = req.ip;
+    const ip = req.ip;
 
     try {
-        // console.log(ip)
+        console.log(ip)
         return next();
     } catch (err) {
         return next(err);
