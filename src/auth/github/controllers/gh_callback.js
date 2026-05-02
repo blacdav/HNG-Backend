@@ -13,7 +13,7 @@ export const GhCallbackAuth = async (req, res) => {
     const storedState = JSON.parse(req.cookies.gh_oauth_state);
     
     if (!storedState.state || state !== storedState.state) {
-        return res.redirect("https://hng-frontend-opal.vercel.app")
+        return res.redirect("https://hng-frontend-insighta.vercel.app")
     }
 
     try {
@@ -55,7 +55,7 @@ export const GhCallbackAuth = async (req, res) => {
             maxAge: 5 * 60 * 1000
         });
 
-        return res.redirect("https://hng-frontend-opal.vercel.app/dashboard")
+        return res.redirect("https://hng-frontend-insighta.vercel.app/dashboard")
     } catch (err) {
         console.log("err object", err);
         throw err;
