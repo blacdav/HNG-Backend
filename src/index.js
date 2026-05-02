@@ -9,7 +9,7 @@ const app = express();
 const logger = morgan("dev");
 
 app.use(cors({
-    origin: ["http://localhost:5173", "http://localhost:3000", "https://hng-frontend-opal.vercel.app"],
+    origin: ["http://localhost:5173", "http://localhost:3000", "https://hng-frontend-insighta.vercel.app"],
     methods: ["POST", "GET", "DELETE"],
     allowedHeaders: ["Content-Type", "Cookie", "x-client-type", "Authorization"],
     credentials: true
