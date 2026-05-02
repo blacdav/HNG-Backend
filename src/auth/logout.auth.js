@@ -6,7 +6,6 @@ const { RefreshToken } = models;
 export const LogoutAuth = (req, res) => {
     // receives a json body with refresh token,
     // invalidates the refresh token in the database
-    const { refresh_token, access_token } = req.body;
 
     try {
         // Invalidate the refresh token in the database (if you are storing them)
@@ -19,6 +18,9 @@ export const LogoutAuth = (req, res) => {
             res.clearCookie("refresh_token");
 
             return res.status(204).send()
+        } else {
+            const access_token = req.headers.authorization.split(" ")[1];
+            req.body.refresh_token;
         }
 
         // sequelize.transaction(async t => {
